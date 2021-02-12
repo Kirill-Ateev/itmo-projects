@@ -6,9 +6,6 @@
 <xsl:apply-templates/>
 </math>
 </xsl:template>
-  <xsl:template match="@*|node()">
-    <xsl:copy><xsl:apply-templates select="@*|node()" /></xsl:copy>
-  </xsl:template>
   <xsl:template match="строка">
     <mrow><xsl:apply-templates select="@*|node()" /></mrow>
   </xsl:template>
