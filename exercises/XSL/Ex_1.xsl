@@ -1,5 +1,4 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-<xsl:template match="/">
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <xsl:template match="@*|node()">
     <xsl:copy><xsl:apply-templates select="@*|node()" /></xsl:copy>
@@ -31,6 +30,5 @@
   <xsl:template match="низ">
     <msub><xsl:apply-templates select="@*|node()" /></msub>
   </xsl:template>
-<math>
-</xsl:template>
+</math>
 </xsl:stylesheet>
