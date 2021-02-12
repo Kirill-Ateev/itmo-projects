@@ -1,5 +1,5 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-
+<math xmlns="http://www.w3.org/1998/Math/MathML">
   <xsl:template match="@*|node()">
     <xsl:copy><xsl:apply-templates select="@*|node()" /></xsl:copy>
   </xsl:template>
@@ -30,6 +30,5 @@
   <xsl:template match="низ">
     <msub><xsl:apply-templates select="@*|node()" /></msub>
   </xsl:template>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
+<math>
 </xsl:stylesheet>
