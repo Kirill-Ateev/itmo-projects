@@ -10,31 +10,31 @@
 </xsl:copy>
 </xsl:template>
 
-<xsl:template match="/графика/@ширина">
+<xsl:template match="/root/графика/@ширина">
 <xsl:attribute name="width">
 <xsl:value-of select="." />
 </xsl:attribute>
 </xsl:template> 
 
-<xsl:template match="/графика/@высота">
+<xsl:template match="/root/графика/@высота">
 <xsl:attribute name="height">
 <xsl:value-of select="." />
 </xsl:attribute>
 </xsl:template> 
 
-<xsl:template match="/графика/эллипс/@заливка">
+<xsl:template match="/root/графика/эллипс/@заливка">
 <xsl:attribute name="fill">
 <xsl:value-of select="." />
 </xsl:attribute>
 </xsl:template> 
 
-<xsl:template match="/графика/эллипс/@ободок">
+<xsl:template match="/root/графика/эллипс/@ободок">
 <xsl:attribute name="stroke">
 <xsl:value-of select="." />
 </xsl:attribute>
 </xsl:template> 
 
-<xsl:template match="/графика/эллипс/@ширина-ободка">
+<xsl:template match="/root/графика/эллипс/@ширина-ободка">
 <xsl:attribute name="stroke-width">
 <xsl:value-of select="." />
 </xsl:attribute>
