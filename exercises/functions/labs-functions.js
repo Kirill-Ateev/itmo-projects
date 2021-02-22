@@ -19,3 +19,6 @@ console.log(qv.bind(this)(5))
 const partiPow = x => y => !!y ? x ** y : x**x;
 partiPow(5)()
 
+//FUNC-007
+https://kodaktor.ru/?!=_func_6a33a
+
