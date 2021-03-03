@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Promises</title>
+    <meta author="Ateev Kirill" charset="utf-8" />
+  </head>
+  <body>
+    <h1>Promises exercise (Массив ответов будет в консоли)</h1>
+    <button>Поехали</button>
+    <ol id="values">
+      <li>10</li>
+      <li>20</li>
+      <li>30</li>
+    </ol>
+    <ol id="urls">
+      <li>https://kodaktor.ru/api/m/</li>
+      <li>https://kodaktor.ru/api/MS2/</li>
+      <li>https://kodaktor.ru/api/MS3/</li>
+    </ol>
+
+    <script>
+      const values = document
+        .getElementById("values")
+        .getElementsByTagName("*");
+      const URLs = document.getElementById("urls").getElementsByTagName("*");
+
+      let valuesArray = [];
+      let URLsArray = [];
+      let resultArray = [];
+      let path = "";
+
+      Array.from(values).forEach(function (elem) {
+        valuesArray.push(parseInt(elem.textContent));
+      });
+      Array.from(URLs).forEach(function (elem) {
+        URLsArray.push(elem.textContent);
+      });
+
+      document
+        .querySelector("button")
+        .addEventListener("click", async ({ target: t }) => {
+          for (let i = 0; i < URLsArray.length; i++) {
+            if (i === 0) path = URLsArray[i] + valuesArray[i].toString();
+
+            result = await fetch(path)
+              .then((x) => x.text())
+              .then((x) =>
+                resultArray.push(parseInt(x.match(/([1-9])\w+/g)[0]))
+              )
+              .then((x) => {
+                path =
+                  URLsArray[i + 1] +
+                  valuesArray[i].toString() +
+                  "/" +
+                  resultArray[resultArray.length - 1].toString();
+              });
+          }
+          console.log(resultArray);
+          t.textContent = `Результат: ${resultArray[resultArray.length - 1]}`;
+          resultArray = [];
+          path = "";
+        });
+    </script>
+  </body>
+</html>
