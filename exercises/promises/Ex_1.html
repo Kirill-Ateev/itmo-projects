@@ -39,8 +39,8 @@
       document
         .querySelector("button")
         .addEventListener("click", async ({ target: t }) => {
-          for (let i = 0; i < URLsArray.length; i++) {
-            if (i === 0) path = URLsArray[i] + valuesArray[i].toString();
+          for (let i = 1; i <= URLsArray.length; i++) {
+            if (i === 1) path = URLsArray[i-1] + valuesArray[i-1].toString();
 
             result = await fetch(path)
               .then((x) => x.text())
@@ -49,8 +49,8 @@
               )
               .then((x) => {
                 path =
-                  URLsArray[i + 1] +
-                  valuesArray[i + 1] +
+                  URLsArray[i] +
+                  valuesArray[i] +
                   "/" +
                   resultArray[resultArray.length - 1].toString();
               });
