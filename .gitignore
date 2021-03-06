@@ -1,0 +1,3 @@
+# dependencies
+/node_modules
+/labs/puppeteer/node_modules
