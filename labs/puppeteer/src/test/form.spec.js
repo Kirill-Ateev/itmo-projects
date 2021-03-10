@@ -5,6 +5,7 @@ import { isDebugging } from './testingInit.js';
 
 // yarn test - для запуска тестирования в браузере без интерфейса
 // yarn vizualtest - для запуска тестирования в визуальном режиме
+// https://kodaktor.ru/puppet100321 - можно добавить доп штуки
 
 const APP = 'https://kodaktor.ru/g/puppetform';
 
