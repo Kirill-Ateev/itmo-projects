@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE information 
+PUBLIC "ATEEV.KIR/DTD" "http://kodaktor.ru/j/_dtd/5e52d">
+
+<information>
+<person name = "Атеев Кирилл">
+<CVtitle>Full-stack developer, but more specialized in frontend.</CVtitle>
+<technologies>
+<specialization heading = "frontend">
+<tool>JavaScript (ES6+)</tool>
+<tool>ReactJS</tool>
+<tool>Redux (Formik, Redux-Form, Thunk, Redux-Saga, reselect)</tool>
+<tool>Styled-Components / CSS-modules</tool>
+<tool>Twitter Bootstrap / Material-UI</tool>
+</specialization>
+<specialization heading = "backend">
+<tool>SQL</tool>
+<tool>PHP</tool>
+<tool>MySQL / PostgreSQL / MS SQL </tool>
+</specialization>
+<specialization heading = "other skills">
+<tool>Git / GitHub</tool>
+<tool>BEM (CSS)</tool>
+<tool>Information systems design (BPMN, UML)</tool>
+<tool>Agile methodologies (Scrum, Kanban, XP)</tool>
+</specialization>
+</technologies>
+</person>
+</information>
+
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT information (person)>
+<!ELEMENT person (CVtitle, technologies)>
+<!ATTLIST person name CDATA #REQUIRED>
+<!ELEMENT CVtitle (#PCDATA)>
+<!ELEMENT technologies (specialization*)>
+<!ATTLIST specialization heading CDATA #REQUIRED>
+<!ELEMENT specialization (tool*)>
+<!ELEMENT tool (#PCDATA)>
