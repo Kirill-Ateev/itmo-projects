@@ -1,0 +1,12 @@
+{
+  "name": "babel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Kirill",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@babel/generator": "^7.13.9",
+    "@babel/parser": "^7.13.11"
+  }
+}
