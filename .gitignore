@@ -2,3 +2,4 @@
 /node_modules
 /labs/puppeteer/node_modules
 /labs/babel/node_modules
+/exercises/stateManagement/node_modules
