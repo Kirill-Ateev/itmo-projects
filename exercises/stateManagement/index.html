@@ -96,7 +96,7 @@
       }
 
       function render() {
-        console.log(store.getState());
+        console.log(store.getState()); //For logging
         parent.location.hash = `${store.getState().page}`;
         f.src=store.getState().url
         s.value = store.getState().page;
