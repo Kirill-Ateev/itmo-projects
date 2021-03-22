@@ -25,7 +25,7 @@
           Содержание</a
         >
         <a target="f" id="prv"> Предыдущая</a>
-        <a id="nxt" target="f" > Следующая</a>
+        <a target="f" id="nxt" > Следующая</a>
         <a target="_blank" href="https://e.lanbook.com/book/118648"
           >Купить</a
         ></span
@@ -34,7 +34,6 @@
     <iframe
       name="f"
       id="f"
-      src="https://kodaktor.ru/gossbook_slides/gossbook-01.png"
     ></iframe>
 
     <script>
@@ -77,19 +76,17 @@
 
       var store = Redux.createStore(counter);
 
-      const n = 141;
-      const s = document.querySelector("#s");
+      const n = 141; //Max page
+      const s = document.querySelector("#s"); 
       const f = document.querySelector("#f");
 
       window.onload = function () {
         const i = Number(location.hash.substring(1));
 
-        if (i >= 1 && i < 141) {
           if (Number(i) < 10) i = "0" + String(i);
           store.dispatch({ type: "MOVETO", page: i });
           f.src = store.getState().url;
-          s.value = store.getState().page;
-        }
+          s.value = store.getState().page;      
       };
 
       for (let i = 1; i <= n; ++i) {
