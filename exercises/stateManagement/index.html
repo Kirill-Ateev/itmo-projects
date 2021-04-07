@@ -37,7 +37,7 @@
     ></iframe>
 
     <script>
-        //Да, я знаю код редьюсеров отвратителен, тем не менее экшены работают иммутабельно и есть валидация). И да я не стал работать через redux как dependency в package.json.
+      
       let initialState = {
         page: Number(location.hash.substring(1)) > 141 || Number(location.hash.substring(1)) <= 0 ? 1 : Number(location.hash.substring(1)),
         url: `https://kodaktor.ru/gossbook_slides/gossbook-${Number(location.hash.substring(1)) > 141 || Number(location.hash.substring(1)) <= 0 ? "01" : Number(location.hash.substring(1)) < 10 ? "0"+String(Number(location.hash.substring(1))) : Number(location.hash.substring(1)) }.png`,
@@ -74,7 +74,10 @@
         }
       }
 
-      var store = Redux.createStore(counter);
+      var store = Redux.createStore(
+           counter, 
+           window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() //для DevTools 
+         );
 
       const n = 141; //Max page
       const s = document.querySelector("#s"); 
