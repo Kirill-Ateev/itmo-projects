@@ -3,44 +3,50 @@
   <head>
     <title>Goss Book</title>
     <meta charset="utf-8" />
-    <meta name="book author" content="Ilya Gosudarev" authorExercise="Ateev Kirill" />
+    <meta
+      name="book author"
+      content="Ilya Gosudarev"
+      authorExercise="Ateev Kirill"
+    />
     <link rel="stylesheet" href="https://kodaktor.ru/css/board2" />
     <link rel="stylesheet" href="https://kodaktor.ru/css/highcss_atom" />
     <link rel="stylesheet" href="https://kodaktor.ru/css/board50" />
     <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
   </head>
   <style>
-      a {
-          color: green
-      }
+    a {
+      color: green;
+    }
   </style>
   <body>
     <div>
       <select id="s"></select
       ><span>
-        <a
-          target="f"
-          id="contentButton"
-        >
-          Содержание</a
-        >
+        <a target="f" id="contentButton"> Содержание</a>
         <a target="f" id="prv"> Предыдущая</a>
-        <a target="f" id="nxt" > Следующая</a>
+        <a target="f" id="nxt"> Следующая</a>
         <a target="_blank" href="https://e.lanbook.com/book/118648"
           >Купить</a
         ></span
       >
     </div>
-    <iframe
-      name="f"
-      id="f"
-    ></iframe>
+    <iframe name="f" id="f"></iframe>
 
     <script>
-      
       let initialState = {
-        page: Number(location.hash.substring(1)) > 141 || Number(location.hash.substring(1)) <= 0 ? 1 : Number(location.hash.substring(1)),
-        url: `https://kodaktor.ru/gossbook_slides/gossbook-${Number(location.hash.substring(1)) > 141 || Number(location.hash.substring(1)) <= 0 ? "01" : Number(location.hash.substring(1)) < 10 ? "0"+String(Number(location.hash.substring(1))) : Number(location.hash.substring(1)) }.png`,
+        page:
+          Number(location.hash.substring(1)) > 141 ||
+          Number(location.hash.substring(1)) <= 0
+            ? 1
+            : Number(location.hash.substring(1)),
+        url: `https://kodaktor.ru/gossbook_slides/gossbook-${
+          Number(location.hash.substring(1)) > 141 ||
+          Number(location.hash.substring(1)) <= 0
+            ? "01"
+            : Number(location.hash.substring(1)) < 10
+            ? "0" + String(Number(location.hash.substring(1)))
+            : Number(location.hash.substring(1))
+        }.png`,
       };
 
       function counter(state = initialState, action) {
@@ -48,14 +54,26 @@
           case "NEXT":
             return {
               ...state,
-              page: Math.min(141,Number(state.page + 1)),
-              url: `https://kodaktor.ru/gossbook_slides/gossbook-${state.page < 141 ? (state.page + 1 < 10 ? "0" + String(state.page + 1) : String(state.page + 1)) : ('141')}.png`,
+              page: Math.min(141, Number(state.page + 1)),
+              url: `https://kodaktor.ru/gossbook_slides/gossbook-${
+                state.page < 141
+                  ? state.page + 1 < 10
+                    ? "0" + String(state.page + 1)
+                    : String(state.page + 1)
+                  : "141"
+              }.png`,
             };
           case "PREV":
             return {
               ...state,
-              page: Math.max(1,Number(state.page - 1)),
-              url: `https://kodaktor.ru/gossbook_slides/gossbook-${state.page <= 1 ? ('01'): (state.page - 1 < 10 ? "0" + String(state.page - 1) : String(state.page - 1))}.png`,
+              page: Math.max(1, Number(state.page - 1)),
+              url: `https://kodaktor.ru/gossbook_slides/gossbook-${
+                state.page <= 1
+                  ? "01"
+                  : state.page - 1 < 10
+                  ? "0" + String(state.page - 1)
+                  : String(state.page - 1)
+              }.png`,
             };
           case "CONTENT":
             return {
@@ -75,21 +93,22 @@
       }
 
       var store = Redux.createStore(
-           counter, 
-           window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() //для DevTools 
-         );
+        counter,
+        window.__REDUX_DEVTOOLS_EXTENSION__ &&
+          window.__REDUX_DEVTOOLS_EXTENSION__() //для DevTools
+      );
 
       const n = 141; //Max page
-      const s = document.querySelector("#s"); 
+      const s = document.querySelector("#s");
       const f = document.querySelector("#f");
 
       window.onload = function () {
         const i = Number(location.hash.substring(1));
 
-          if (Number(i) < 10) i = "0" + String(i);
-          store.dispatch({ type: "MOVETO", page: i });
-          f.src = store.getState().url;
-          s.value = store.getState().page;      
+        if (Number(i) < 10) i = "0" + String(i);
+        store.dispatch({ type: "MOVETO", page: i });
+        f.src = store.getState().url;
+        s.value = store.getState().page;
       };
 
       for (let i = 1; i <= n; ++i) {
@@ -101,7 +120,7 @@
       function render() {
         console.log(store.getState()); //For logging
         parent.location.hash = `${store.getState().page}`;
-        f.src=store.getState().url
+        f.src = store.getState().url;
         s.value = store.getState().page;
       }
 
@@ -113,9 +132,11 @@
         store.dispatch({ type: "PREV" });
       });
 
-      document.getElementById("contentButton").addEventListener("click", function () {
-        store.dispatch({ type: "CONTENT" });
-      });
+      document
+        .getElementById("contentButton")
+        .addEventListener("click", function () {
+          store.dispatch({ type: "CONTENT" });
+        });
 
       s.addEventListener("input", function (e) {
         let i = e.target.value;
