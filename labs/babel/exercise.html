@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Babel: плагины</title>
-    <!-- <script src="/babel7.9.6.js"></script> -->
-    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
-    <script src="/j/out"></script>
 
-    Ответ в консоли. Оригинал -
-    <a href="https://kodaktor.ru/?!=_150321_8f909"
-      >https://kodaktor.ru/?!=_150321_8f909</a
-    >
-    Правильно решенное задание -
-    <a href="https://kodaktor.ru/?!=ba3bd27">https://kodaktor.ru/?!=ba3bd27</a>
-  </head>
+<head>
+  <title>Babel: плагины</title>
+  <!-- <script src="/babel7.9.6.js"></script> -->
+  <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+  <script src="/j/out"></script>
 
-  <body>
-    <script src="/j/dblttl"></script>
+  Ответ в консоли. Оригинал -
+  <a href="https://kodaktor.ru/?!=_150321_8f909">https://kodaktor.ru/?!=_150321_8f909</a>
+  Правильно решенное задание -
+  <a href="https://kodaktor.ru/?!=ba3bd27">https://kodaktor.ru/?!=ba3bd27</a>
+</head>
 
-    <script type="text/babel">
-      {
-        const code = `
+<body>
+  <script src="/j/dblttl"></script>
+
+  <script type="text/babel">
+    {
+      const code = `
  	      let rap1 = #{x: 1, y: 4};
  	      let rap2 = #{x: 1, y: 4};
           Out.slog(rap1 === rap2);  
           Out.slog(#[1, 2, 3] === #[1, 2, 3]);
 `;
-        const output = Babel.transform(code, {
-          plugins: [["syntax-record-and-tuple", { syntaxType: "hash" }]],
-        });
+      const output = Babel.transform(code, {
+        plugins: [["syntax-record-and-tuple", { syntaxType: "hash" }]],
+      });
 
-        //Использую console.log потому что eval даёт ошибку. При этом на примерах из https://tc39.es/proposal-record-tuple/tutorial/ все работает хорошо и через eval.
+      //Использую console.log потому что eval даёт ошибку. При этом на примерах из https://tc39.es/proposal-record-tuple/tutorial/ все работает хорошо и через eval.
 
-        console.log(output.code);
-      }
-    </script>
-  </body>
+      console.log(output.code);
+    }
+  </script>
+</body>
+
 </html>
