@@ -9,7 +9,6 @@
 
   "scripts": {
     "start": "node index.html",
-    "build": "react-scripts build",
-    "test": "react-scripts test"
+    "build": "node index.html"
   }
 }
