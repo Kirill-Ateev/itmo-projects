@@ -5,5 +5,11 @@
   "repository": "https://github.com/BGDSHKA/itmo-projects.git",
   "author": "BGDSHKA <kirill.ateev59@gmail.com>",
   "license": "n",
-  "private": false
+  "private": false,
+
+  "scripts": {
+    "start": "node index.html",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
+  },
 }
