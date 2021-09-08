@@ -1,0 +1,9 @@
+{
+  "name": "itmo-projects",
+  "version": "1.0.0",
+  "main": "index.html",
+  "repository": "https://github.com/BGDSHKA/itmo-projects.git",
+  "author": "BGDSHKA <kirill.ateev59@gmail.com>",
+  "license": "n",
+  "private": false
+}
