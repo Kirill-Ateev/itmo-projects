@@ -11,5 +11,5 @@
     "start": "node index.html",
     "build": "react-scripts build",
     "test": "react-scripts test"
-  },
+  }
 }
