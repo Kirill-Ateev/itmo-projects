@@ -3,6 +3,8 @@ const http = require("http");
 const input = process.argv[2];
 const path = require('path');
 
+//Я отправляю побитовый стрим на сервер (+нужен txt файл) 
+
 const options = {
   hostname: "127.0.0.1",
   port: 3000,
@@ -15,21 +17,15 @@ const options = {
 };
 
 const req = http.request(options, res => {
-  console.log("Ответ сервера:");
-  console.log(res)
-
-//   res.on("data", d => {
-//     process.stdout.write(d);
-//   });
+  console.log("Ответ сервера: ", res.statusCode);
 });
 
-// req.on("error", error => {
-//   console.error(error);
-// });
+req.on("error", error => {
+  console.error(error);
+});
 
-// req.end();
 
-fs.createReadStream(input)
+fs.createReadStream(input, { highWaterMark: 1 })
   .pipe(req)
   .on("finish", () => {
     console.log("Послано");
