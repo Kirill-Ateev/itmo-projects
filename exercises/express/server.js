@@ -44,7 +44,7 @@ app.get('/promise/', (req, res) => {
 
 app.get('/fetch/', (req, res) => {
   res.set(headersTextHtml);
-  res.send(
+  res.send(`
     <html>
       <head></head>
       <body>
@@ -60,8 +60,7 @@ app.get('/fetch/', (req, res) => {
           }}
         </script>
       </body>
-    </html>
-  );
+    </html>`);
 });
 
 app.listen(PORT, () => {
