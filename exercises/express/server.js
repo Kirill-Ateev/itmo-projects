@@ -26,13 +26,42 @@ app.get('/', (req, res) => {
 });
 
 app.get('/login/', (req, res) => {
-    res.set(headersTextPlain);
-    res.send(login);
-  });
+  res.set(headersTextPlain);
+  res.send(login);
+});
 
 app.get('/sample/', (req, res) => {
   res.set(headersTextPlain);
   res.send('function task(x) { return x*this*this; }');
+});
+
+app.get('/promise/', (req, res) => {
+  res.set(headersTextPlain);
+  res.send(
+    'function task(x) { return new Promise((res,rej)=> x < 18 ? res(`yes`) : rej(`no`) ) }'
+  );
+});
+
+app.get('/fetch/', (req, res) => {
+  res.set(headersTextHtml);
+  res.send(
+    <html>
+      <head></head>
+      <body>
+        <input id="inp" />
+        <button id="bt" onclick="fetch()">
+          BUTTON
+        </button>
+        <script>
+          {function fetch() {
+            fetch(document.getElementById('inp').value)
+              .then((r) => r.text())
+              .then((x) => (document.getElementById('inp').value = x));
+          }}
+        </script>
+      </body>
+    </html>
+  );
 });
 
 app.listen(PORT, () => {
