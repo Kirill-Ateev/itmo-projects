@@ -49,11 +49,11 @@ app.get('/fetch/', (req, res) => {
       <head></head>
       <body>
         <input id="inp" />
-        <button id="bt" onclick="fetch()">
+        <button id="bt" onclick="fetchData()">
           BUTTON
         </button>
         <script>
-          {function fetch() {
+          {function fetchData() {
             fetch(document.getElementById('inp').value)
               .then((r) => r.text())
               .then((x) => (document.getElementById('inp').value = x));
