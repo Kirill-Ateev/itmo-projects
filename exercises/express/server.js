@@ -2,6 +2,16 @@ const express = require('express');
 
 const PORT = process.env.PORT || 5000;
 const app = express();
+const CORS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET,POST,DELETE,PUT,OPTIONS,PATCH",
+  "Access-Control-Allow-Headers":
+    "x-test,Content-Type,Accept,Access-Control-Allow-Headers",
+  "Access-Control-Expose-Headers":
+    "X-Resp,Content-Type, Accept, Access-Control-Allow-Headers, Access-Control-Expose-Headers",
+  "Access-Control-Allow-Headers":
+    "X-Resp,Content-Type, Accept, Access-Control-Allow-Headers, Access-Control-Expose-Headers",
+};
 const login = 'itmo307692';
 const headersTextHtml = {
   'Content-Type': 'text/html; charset=UTF-8',
@@ -15,10 +25,8 @@ const headersTextPlain = {
 };
 const headersJson = {
   'Content-Type': 'application/json',
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
-  'Access-Control-Allow-Headers': 'x-test,Content-Type,Accept,Access-Control-Allow-Headers',
 };
+
 
 app.use(express.json());
 
@@ -65,14 +73,21 @@ app.get('/fetch/', (req, res) => {
     </html>`);
 });
 
-app.get('/result4/', (req, res) => {
-  res.set(headersJson);
-  res.send({
-    message: 'itmo307692',
-    'x-result': req.headers['x-test'],
-    'x-body': req.body,
+app.get("/result4/", (req, res) => {
+  const result = {
+    message: login,
+    "x-result": req.headers["x-test"],
+  };
+  let body = "";
+
+  req
+  .on("data", (data) => (body += data))
+  .on("end", () => {
+    result["x-body"] = body;
+    res.writeHead(200, {headersJson, ...CORS});
+    res.end(JSON.stringify(result));
   });
-});
+})
 
 app.listen(PORT, () => {
   console.log(`Server listening at http://localhost:${PORT}`);
