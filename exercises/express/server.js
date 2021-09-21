@@ -16,6 +16,8 @@ const headersTextPlain = {
 const headersJson = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
+  'Access-Control-Allow-Headers': 'x-test,Content-Type,Accept,Access-Control-Allow-Headers',
 };
 
 app.use(express.json());
@@ -61,6 +63,15 @@ app.get('/fetch/', (req, res) => {
         </script>
       </body>
     </html>`);
+});
+
+app.get('/result4/', (req, res) => {
+  res.set(headersJson);
+  res.send({
+    message: 'itmo307692',
+    'x-result': req.headers['x-test'],
+    'x-body': req.body,
+  });
 });
 
 app.listen(PORT, () => {
