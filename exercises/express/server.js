@@ -4,9 +4,8 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 const CORS = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods": "GET,POST,DELETE,PUT,OPTIONS",
-  "Access-Control-Allow-Headers":
-    "x-test,Content-Type,Accept,Access-Control-Allow-Headers"
+  "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+  "Access-Control-Allow-Headers": "x-test,Content-Type,Accept,Access-Control-Allow-Headers"
 };
 const login = 'itmo307692';
 const headersTextHtml = {
@@ -69,7 +68,7 @@ app.get('/fetch/', (req, res) => {
     </html>`);
 });
 
-app.get("/result4/", (req, res) => {
+app.all("/result4/", (req, res) => {
   const result = {
     message: login,
     "x-result": req.headers["x-test"],
@@ -77,7 +76,7 @@ app.get("/result4/", (req, res) => {
   let body = "";
 
   req
-  .on("data", (data) => (body += data))
+  .on("data", (chunk) => (body += chunk))
   .on("end", () => {
     result["x-body"] = body;
     res.writeHead(200, {headersJson, ...CORS});
