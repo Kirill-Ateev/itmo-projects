@@ -68,7 +68,7 @@ app.get('/fetch/', (req, res) => {
     </html>`);
 });
 
-app.all("/result4/", (req, res) => {
+app.get("/result4/", (req, res) => {
   const result = {
     message: login,
     "x-result": req.headers["x-test"],
