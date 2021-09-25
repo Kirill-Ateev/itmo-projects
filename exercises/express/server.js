@@ -27,6 +27,15 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
   res.set(headersTextHtml);
+  console.log(req)
+  res.send(login);
+});
+
+app.get('/f', (r) => {
+  res.format({
+    'text/html': () => r.res.send('<h2>42<h2>'),
+    'application/json': () => r.res.send('<h2>Ht42<h2>'),
+  })
   res.send(login);
 });
 
