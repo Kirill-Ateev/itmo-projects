@@ -4,6 +4,7 @@ export default function appScr(express, bodyParser, fs, crypto, http, CORS) {
     'Content-Type': 'text/plain; charset=UTF-8',
     'Access-Control-Allow-Origin': '*',
     'X-Author': login,
+    ...CORS
   };
 
   const app = express();
