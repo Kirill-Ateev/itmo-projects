@@ -1,0 +1,20 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "repository": "https://github.com/BGDSHKA/itmo-projects.git",
+  "author": "BGDSHKA <kirill.ateev59@gmail.com>",
+  "license": "",
+  "private": false,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "http": "^0.0.1-security",
+    "nodemon": "^2.0.12"
+  }
+}
