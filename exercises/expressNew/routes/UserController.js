@@ -1,4 +1,5 @@
 import headersTextPlain from '../app.js';
+import mongoose from 'mongoose';
 
 export default (express, User) => {
   const router = express.Router();
