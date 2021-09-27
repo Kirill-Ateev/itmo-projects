@@ -3,5 +3,5 @@ export default (mongoose) => {
     login: String,
     password: { type: String, required: [true, 'Password is a necessity'] },
   });
-  return mongoose.model('users', UserSchema);
+  return mongoose.model('User', UserSchema);
 };
