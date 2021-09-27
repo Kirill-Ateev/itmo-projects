@@ -2,6 +2,7 @@
 /node_modules
 /labs/puppeteer/node_modules
 /labs/babel/node_modules
+/labs/BSON/node_modules
 /exercises/stateManagement/node_modules
 /exercises/express/node_modules
 /exercises/expressNew/node_modules
