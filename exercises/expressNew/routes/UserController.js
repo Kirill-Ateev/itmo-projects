@@ -19,6 +19,7 @@ export default (express, User) => {
           useUnifiedTopology: true,
         });
         await newUser.save();
+        console.log('Saved')
         res.status(201).json({ 'Добавлено: ': login });
       } catch (e) {
         res.status(400).json({ Ошибка: `${e}` });
