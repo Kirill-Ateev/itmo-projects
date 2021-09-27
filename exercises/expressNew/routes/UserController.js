@@ -8,8 +8,9 @@ export default (express, User) => {
     .get(async (r) => r.res.json(await User.find()))
     .post(async (req, res) => {
       res.set(headersTextPlain);
-
-      const { login, password, URL } = JSON.parse(req.body);
+      console.log(req.body)
+      const { login, password, URL } = req.body;
+      
       const newUser = new User({ login, password });
 
       try {
