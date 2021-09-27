@@ -1,14 +1,32 @@
-export default function appScr(express, bodyParser, fs, crypto, http, CORS) {
-  const login = 'itmo307692';
-  const headersTextPlain = {
-    'Content-Type': 'text/plain; charset=UTF-8',
-    'Access-Control-Allow-Origin': '*',
-    'X-Author': login,
-    ...CORS
-  };
+const login = 'itmo307692';
+export const CORS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,OPTIONS,DELETE',
+  'Access-Control-Allow-Headers':
+    'x-test,Content-Type,Accept,Access-Control-Allow-Headers',
+};
+export const headersTextPlain = {
+  'Content-Type': 'text/plain; charset=UTF-8',
+  'Access-Control-Allow-Origin': '*',
+  'X-Author': login,
+  ...CORS,
+};
 
+export default function appScr(
+  express,
+  bodyParser,
+  cookieParser,
+  fs,
+  crypto,
+  http,
+  User,
+  UserController
+) {
   const app = express();
-  app.use(bodyParser());
+
+  app.use(cookieParser());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
 
   app.all('/login/', (req, res) => {
     res.set(headersTextPlain);
@@ -47,6 +65,8 @@ export default function appScr(express, bodyParser, fs, crypto, http, CORS) {
       );
     }
   });
+
+  app.use('/insert/', UserController(express, User));
 
   app.all('/*', (req, res) => {
     res.set(headersTextPlain);
