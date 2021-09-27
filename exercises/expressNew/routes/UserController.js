@@ -9,7 +9,7 @@ export default (express, User) => {
     .post(async (req, res) => {
       res.set(headersTextPlain);
 
-      const { login, password, URL } = req.body;
+      const { login, password, URL } = JSON.parse(req.body);
       const newUser = new User({ login, password });
 
       try {
