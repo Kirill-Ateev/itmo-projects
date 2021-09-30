@@ -26,7 +26,7 @@ export default function appScr(
 
   app.use(cookieParser());
   app.use(bodyParser.urlencoded({ extended: true }));
-  //app.use(bodyParser.json());
+  app.use(bodyParser.json());
 
   app.all('/login/', (req, res) => {
     res.set(headersTextPlain);
@@ -67,11 +67,28 @@ export default function appScr(
   });
 
   app.use('/insert/', UserController(express, User));
+  app.all('/wordpress/', (req, res) => {
+    res.redirect('https://app.example.io');
+  })
+  app.all('/render/', async (req, res) => {
+    res.set(headersTextPlain);
+    const { addr } = req.query;
+    const { random2, random3 } = req.body;
+
+    http.get(addr, (r, body = '') => {
+      r.on('data', (data) => (body += data)).on('end', () => {
+        fs.writeFileSync('views/render.pug', body);
+        res.render('render', { login: login, random2, random3 });
+      });
+    });
+  });
 
   app.all('/*', (req, res) => {
     res.set(headersTextPlain);
     res.send(login);
   });
+
+  app.set('view engine', 'pug');
 
   return app;
 }

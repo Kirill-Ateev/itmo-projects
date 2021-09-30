@@ -6,8 +6,9 @@ PORT = 8000
 class MyHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
-        self.send_header("Content-type", "application/octet-stream")
+        # self.send_header("Content-type", "application/octet-stream")
         # self.send_header("Content-length", "33333")
+        self.send_header("Connection", "keep-alive")
         self.send_header("Transfer-Encoding", "chunked")
         self.end_headers()
         self.wfile.write(bytes("aaaaaaaaaa","utf-8"))
