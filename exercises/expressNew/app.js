@@ -68,7 +68,7 @@ export default function appScr(
 
   app.use('/insert/', UserController(express, User));
   app.all('/wordpress/', (req, res) => {
-    res.redirect('https://app.example.io');
+    res.redirect('http://188.68.220.35:8000/');
   })
   app.all('/render/', async (req, res) => {
     res.set(headersTextPlain);
