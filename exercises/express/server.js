@@ -32,11 +32,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/f', (r) => {
-  res.format({
+  r.res.format({
     'text/html': () => r.res.send('<h2>42<h2>'),
     'application/json': () => r.res.send('<h2>Ht42<h2>'),
   });
-  res.send(login);
+  // r.res.send(login);
 });
 
 app.get('/login/', (req, res) => {
