@@ -6,9 +6,11 @@
   "author": "BGDSHKA <kirill.ateev59@gmail.com>",
   "license": "n",
   "private": false,
-
   "scripts": {
     "start": "node index.html",
     "build": "node index.html"
+  },
+  "dependencies": {
+    "puppeteer": "^10.4.0"
   }
 }

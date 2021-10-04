@@ -9,6 +9,7 @@ import UserController from './routes/UserController.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import puppeteer from 'puppeteer';
 
 dotenv.config({path: './.env'})
 const PORT = process.env.PORT || 443;
@@ -22,7 +23,8 @@ const app = appSrc(
   crypto,
   http,
   User,
-  UserController
+  UserController,
+  puppeteer
 );
 
 const start = async () => {

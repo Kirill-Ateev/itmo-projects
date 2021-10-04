@@ -20,7 +20,8 @@ export default function appScr(
   crypto,
   http,
   User,
-  UserController
+  UserController,
+  puppeteer
 ) {
   const app = express();
 
@@ -69,7 +70,7 @@ export default function appScr(
   app.use('/insert/', UserController(express, User));
   app.all('/wordpress/', (req, res) => {
     res.redirect('http://188.68.220.35:8000/');
-  })
+  });
   app.all('/render/', async (req, res) => {
     res.set(headersTextPlain);
     const { addr } = req.query;
@@ -81,6 +82,24 @@ export default function appScr(
         res.render('render', { login: login, random2, random3 });
       });
     });
+  });
+
+  app.all('/test/', async (req, res) => {
+    res.set(headersTextPlain);
+    const { URL } = req.query;
+
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ['--no-sandbox'],
+    });
+    const page = await browser.newPage();
+    await page.goto(URL);
+    await page.waitForSelector('#bt');
+    await page.click('#bt');
+    await page.waitForSelector('#inp');
+    const got = await page.$eval('#inp', ({ value }) => value);
+    browser.close();
+    res.send(got);
   });
 
   app.all('/*', (req, res) => {
