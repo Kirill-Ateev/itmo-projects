@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Галлерея</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <form method="post" enctype="multipart/form-data" action="/upload">
+      <input type="file" name="file" />
+      <input type="submit" value="Submit" />
+    </form>
+    <div id="photos"></div>
+    <script async>
+      (async () => {
+        console.log(window.location.origin);
+        const x = await fetch(`${window.location.origin}/allImages`);
+        const r = await x.json();
+        r.forEach(image => {
+          let elem = document.createElement("img");
+          elem.setAttribute("src", `uploaded/${image}`);
+          //Пусть все картинки будут квадратными 
+          elem.setAttribute("height", "500");
+          elem.setAttribute("width", "500");
+          document.getElementById("photos").appendChild(elem);
+        });
+      })();
+    </script>
+  </body>
+</html>
