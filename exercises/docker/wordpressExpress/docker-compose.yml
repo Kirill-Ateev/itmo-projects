@@ -4,6 +4,7 @@ services:
 
   web:
     build: ./backend
+    restart: always
     volumes:
       - ./backend:/usr/src/backend
       - /usr/src/backend/node_modules
