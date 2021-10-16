@@ -1,0 +1,10 @@
+{
+  "name": "dnode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "dnode": "^1.2.2",
+    "weak": "^1.0.1"
+  }
+}
