@@ -94,10 +94,11 @@ function App() {
       </Paper>
       {chat.map((payload, index) => (
         <Paper
+          key={index}
           className={payload.userName === userName ? classes.messageRight : classes.message}
           elevation={2}
         >
-          <Typography variant="h5" key={index}>
+          <Typography variant="h5">
             {payload.userName}:
           </Typography>{" "}
           <Typography variant="h6">{payload.message}</Typography>
