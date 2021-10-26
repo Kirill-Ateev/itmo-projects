@@ -13,6 +13,10 @@ const io = socketIo(server, {
 const PORT = process.env.PORT || 8000;
 
 io.on("connection", socket => {
+  socket.broadcast.emit("arrive", "New user arrived!");
+
+  socket.on("disconnect", () => io.emit("exit", "Some user left the chat"));
+
   socket.on("message", payload => {
     io.emit("message", payload);
   });

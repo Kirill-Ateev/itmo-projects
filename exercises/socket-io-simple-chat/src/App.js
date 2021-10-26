@@ -3,6 +3,8 @@ import io from "socket.io-client";
 import { uniqueNamesGenerator, adjectives, animals } from "unique-names-generator";
 import { Paper, Container, Typography, TextField, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const socket = io("http://localhost:8000");
 
@@ -48,6 +50,24 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    socket.on("arrive", payload => {
+      toast(payload)
+    });
+    return () => {
+      socket.off("arrive");
+    };
+  }, []);
+
+  useEffect(() => {
+    socket.on("exit", payload => {
+      toast(payload)
+    });
+    return () => {
+      socket.off("exit");
+    };
+  }, []);
+
   const sendMessage = () => {
     if (message) {
       socket.emit("message", { userName, message });
@@ -59,6 +79,7 @@ function App() {
 
   return (
     <Container>
+      <ToastContainer />
       <Paper className={classes.paper} elevation={0}>
         <Typography variant="h4" gutterBottom>
           Hello, {userName}!
