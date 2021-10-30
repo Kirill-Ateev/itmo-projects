@@ -28,7 +28,6 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
-
 app.post(
   "/decrypt",
   upload.fields([
@@ -52,7 +51,6 @@ app.post(
 
     const privateKey = fs.readFileSync("./uploads/key", "utf8");
     const original = new nodersa(privateKey).decrypt(fs.readFileSync("./uploads/secret"), "utf8");
-
 
     res.send(original);
   },
