@@ -33,11 +33,11 @@ app.post(
   "/decrypt",
   upload.fields([
     {
-      name: "message",
+      name: "secret",
       maxCount: 1,
     },
     {
-      name: "RSAkey",
+      name: "key",
       maxCount: 1,
     },
   ]),
@@ -50,8 +50,8 @@ app.post(
       return next(error);
     }
 
-    const privateKey = fs.readFileSync("./uploads/RSAkey", "utf8");
-    const original = new nodersa(privateKey).decrypt(fs.readFileSync("./uploads/message"), "utf8");
+    const privateKey = fs.readFileSync("./uploads/key", "utf8");
+    const original = new nodersa(privateKey).decrypt(fs.readFileSync("./uploads/secret"), "utf8");
 
 
     res.send(original);
