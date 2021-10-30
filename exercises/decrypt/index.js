@@ -50,9 +50,9 @@ app.post(
     }
 
     const privateKey = fs.readFileSync("./uploads/key", "utf8");
-    const original = new nodersa(privateKey).decrypt(fs.readFileSync("./uploads/secret"), "utf8");
+    const decrypted = new nodersa(privateKey).decrypt(fs.readFileSync("./uploads/secret"), "utf8");
 
-    res.send(original);
+    res.send(decrypted);
   },
 );
 
