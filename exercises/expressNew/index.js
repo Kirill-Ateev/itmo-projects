@@ -11,7 +11,7 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import puppeteer from 'puppeteer';
 
-dotenv.config({path: './.env'})
+dotenv.config({ path: './.env' });
 const PORT = process.env.PORT || 443;
 
 const User = UserModel(mongoose);
