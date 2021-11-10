@@ -124,7 +124,7 @@
         grid-column-end: span 12;
    }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1600px) {
     .col-lg-1 {
         grid-column-end: span 1;
    }
