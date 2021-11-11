@@ -61,7 +61,7 @@ body {
         display: flex;
         padding-right: min(104px, 8%);
         justify-content: space-between;
-        width: min(350px, 90%);
+        width: min(405px, 90%);
         flex-shrink: 0;
     }
     .footer__link {
