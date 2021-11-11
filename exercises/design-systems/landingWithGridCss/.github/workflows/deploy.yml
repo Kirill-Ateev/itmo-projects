@@ -7,13 +7,20 @@ on:
 
 jobs:
   build:
+    name: build and deploy on heroku
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      # Build
-      # - run: npm ci
-      # - run: npm run build
-      # Deploy
+      # Build project local
+      - run: npm install
+      - run: npm run build
+      # Lighthouse check local depoloy
+      - uses: treosh/lighthouse-ci-action@v8
+        with:
+      # if we need check via url 
+      #    urls: 'http://localhost:3000'
+          configPath: './lighthouserc.json'
+      # Deploys on heroku
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
