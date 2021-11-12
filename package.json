@@ -12,5 +12,8 @@
   },
   "dependencies": {
     "puppeteer": "^10.4.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-css-modules": "^2.11.0"
   }
 }

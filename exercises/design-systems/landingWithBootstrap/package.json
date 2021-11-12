@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "browser-sync start --server src --no-notify --no-ui --cwd src --files index.html,styles/**/*",
+    "test": "editorconfig-checker",
+    "html": "html-minifier --remove-comments --collapse-whitespace --input-dir src --output-dir dist --file-ext html",
+    "styles": "postcss src/styles/index.css --use postcss-import --use postcss-csso --no-map --output dist/styles/index.css",
+    "build": "npm run html && npm run styles",
+    "serve": "serve",
+    "eslint": "eslint src/**"
+  },
+  "devDependencies": {
+    "@html-eslint/eslint-plugin": "^0.12.0",
+    "@html-eslint/parser": "^0.12.0",
+    "browser-sync": "^2.26.7",
+    "css-loader": "^6.5.1",
+    "editorconfig-checker": "^3.1.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.25.2",
+    "html-minifier": "^4.0.0",
+    "postcss-cli": "^7.1.1",
+    "postcss-csso": "^4.0.0",
+    "postcss-import": "^12.0.1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "serve": "^13.0.2"
+  }
+}

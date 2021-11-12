@@ -1,0 +1,28 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: build and deploy on heroku
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Build project local
+      - run: npm install
+      - run: npm run build
+      # Lighthouse check local depoloy
+      - uses: treosh/lighthouse-ci-action@v8
+        with:
+      # if we need check via url 
+      #    urls: 'http://localhost:3000'
+          configPath: './lighthouserc.json'
+      # Deploys on heroku
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "test-ghactions" #Must be unique in Heroku
+          heroku_email: "kirill.ateev59@gmail.com"
