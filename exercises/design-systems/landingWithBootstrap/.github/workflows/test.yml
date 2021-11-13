@@ -24,3 +24,6 @@ jobs:
       - uses: borales/actions-yarn@v2.3.0
         with:
           cmd: eslint
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: csslint
