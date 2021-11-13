@@ -1,6 +1,4 @@
 import express from "express";
-import nodersa from "node-rsa";
-import fs from "fs";
 import multer from "multer";
 import path from "path";
 import serveStatic from "serve-static";
@@ -37,7 +35,7 @@ app.post(
   "/size2json",
   upload.fields([
     {
-      name: "img",
+      name: "image",
       maxCount: 1,
     }
   ]),
@@ -50,7 +48,7 @@ app.post(
       return next(error);
     }
 
-    const dimensions = imageSize('uploads/img')
+    const dimensions = imageSize('uploads/image')
 
     res.send({width: dimensions.width, height: dimensions.height});
   },
