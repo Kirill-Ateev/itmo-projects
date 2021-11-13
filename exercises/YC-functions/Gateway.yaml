@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: image API
+  version: 1.0.0
+servers:
+- url: https://d5dgdk2n0f6spc3u9p9k.apigw.yandexcloud.net
+paths:
+  /login:
+    get:
+      x-yc-apigateway-integration:
+        type: cloud_functions
+        function_id: d4e24v1ipo28i4itakgf
+        tag: $latest
+        service_account_id: ...
+      responses:
+        '200':
+          description: Ok
+  /size2json:
+    post:
+      x-yc-apigateway-integration:
+        type: cloud_functions
+        function_id: d4e24v1ipo28i4itakgf
+        tag: $latest
+        service_account_id: ...
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                image:
+                  example:
+                  - externalValue: https://cdn.eso.org/images/thumb300y/eso1907a.jpg
+                  items:
+                    format: binary
+                    type: string
+                  type: array
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Ok
+components:
+  schemas:
+    Test:
+      type: object
