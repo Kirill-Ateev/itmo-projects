@@ -8,10 +8,6 @@ try {
     const browser = await puppeteer.launch(isDebugging().puppeteer);
     const page = await browser.newPage();   
  
-    const n1 = 3;
-    const n2 = 4;
-  
- 
     await page.goto(URL);
     await page.waitForSelector('#n1');
     page.evaluate(n1 => document.querySelector('#n1').value = n1, n1);
@@ -29,7 +25,7 @@ try {
     
     // const realResult = await page.$eval('#result', async el => el.value); 
     // console.log(realResult);
-    // browser.close();
+    //browser.close();
 } catch (e) {
     console.error(e);
 }
