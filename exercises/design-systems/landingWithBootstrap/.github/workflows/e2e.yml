@@ -19,8 +19,3 @@ jobs:
       # Run e2e tests
       - run: npm run serve dist
       - run: npm run test:e2e
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "test-ghactions" #Must be unique in Heroku
-          heroku_email: "kirill.ateev59@gmail.com"
