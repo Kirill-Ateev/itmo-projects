@@ -1,4 +1,4 @@
-name: Deploy
+name: e2e 
 
 on:
   push:
