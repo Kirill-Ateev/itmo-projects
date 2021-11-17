@@ -18,7 +18,7 @@ jobs:
       - run: npm run serve dist
       # Run e2e tests
       - run: npm run serve dist
-      - run: 
+      - run: npm run test:e2e
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
