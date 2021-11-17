@@ -1,0 +1,26 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: build and deploy on heroku
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # Build project local
+      - run: npm install
+      - run: npm run build
+      # Start build
+      - run: npm run serve dist
+      # Run e2e tests
+      - run: npm run serve dist
+      - run: 
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "test-ghactions" #Must be unique in Heroku
+          heroku_email: "kirill.ateev59@gmail.com"
