@@ -3,6 +3,7 @@
   "scripts": {
     "start": "browser-sync start --server src --no-notify --no-ui --cwd src --files index.html,styles/**/*",
     "test": "editorconfig-checker",
+    "test:e2e": "playwright test --browser=all",
     "html": "html-minifier --remove-comments --collapse-whitespace --input-dir src --output-dir dist --file-ext html",
     "styles": "postcss src/styles/index.css --use postcss-import --use postcss-csso --no-map --output dist/styles/index.css",
     "build": "npm run html && npm run styles",
@@ -13,6 +14,7 @@
   "devDependencies": {
     "@html-eslint/eslint-plugin": "^0.12.0",
     "@html-eslint/parser": "^0.12.0",
+    "@playwright/test": "^1.16.3",
     "browser-sync": "^2.26.7",
     "css-loader": "^6.5.1",
     "editorconfig-checker": "^3.1.0",
