@@ -1,5 +1,4 @@
 import express from "express";
-import multer from "multer";
 import path from "path";
 import serveStatic from "serve-static";
 import * as PImage from "pureimage";
@@ -10,7 +9,6 @@ const app = express();
 const __dirname = path.resolve();
 
 app.use(express.json());
-
 
 app.use("/", serveStatic(path.join(__dirname, "/public")));
 
@@ -23,7 +21,7 @@ app.get("/login", function (req, res) {
 });
 
 app.get("/makeimage", (req, res) => {
-  const { width, height } = req.query;
+  const { width = 100, height = 100 } = req.query;
 
   // make image
   const img = PImage.make(width, height);
@@ -35,11 +33,11 @@ app.get("/makeimage", (req, res) => {
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, 100, 100);
 
-  //write to 'makeimage'
-  PImage.encodePNGToStream(img,  fs.createWriteStream('makeimage'))
+  //write black image or black square by default (we can save only binary too, without extension)
+  PImage.encodePNGToStream(img, fs.createWriteStream("makeimage.png"))
     .then(() => {
-      res.download(('makeimage'))
-      console.log("wrote out the makeimage png file");
+      res.download("makeimage.png");
+      console.log("wrote out the makeimage.png png file");
     })
     .catch(e => {
       console.log("there was an error writing");
