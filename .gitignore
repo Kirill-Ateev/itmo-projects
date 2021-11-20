@@ -9,6 +9,7 @@
 /exercises/zip/node_modules
 /exercises/expressUpload/node_modules
 /exercises/dnode/node_modules
+/exercises/blockchain/node_modules
 /exercises/socket-io-simple-chat/node_modules
 /exercises/design-systems/landingWithFlexboxes/node_modules
 /exercises/design-systems/landingWithGridCss/node_modules
