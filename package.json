@@ -11,7 +11,8 @@
     "build": "node index.html"
   },
   "dependencies": {
-    "puppeteer": "^10.4.0"
+    "puppeteer": "^10.4.0",
+    "pureimage": "^0.3.6"
   },
   "devDependencies": {
     "eslint-plugin-css-modules": "^2.11.0"
