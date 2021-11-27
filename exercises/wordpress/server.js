@@ -32,9 +32,9 @@ app.post("/wordpress", (req, res) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ title: "bgdshka", content }),
+    body: JSON.stringify({ title: "bgdshka", content, status: "publish" }),
   });
   const { id } = await rawResponse2.json();
-  
+
   res.send(id);
 });
