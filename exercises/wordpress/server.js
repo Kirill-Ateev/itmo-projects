@@ -1,5 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser";
+import "isomorphic-fetch"
 
 const app = express();
 app.use(bodyParser.json());
@@ -11,7 +12,7 @@ app.get("/login", function (req, res) {
   res.send("bgdshka");
 });
 
-app.post("/wordpress", (req, res) => {
+app.post("/wordpress", async (req, res) => {
   const { content } = req.body;
 
   const rawResponse1 = await fetch("https://wordpress.kodaktor.ru/wp-json/jwt-auth/v1/token", {
@@ -36,5 +37,5 @@ app.post("/wordpress", (req, res) => {
   });
   const { id } = await rawResponse2.json();
 
-  res.send(id);
+  res.send(JSON.stringify(id));
 });

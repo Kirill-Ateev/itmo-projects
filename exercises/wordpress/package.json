@@ -2,6 +2,7 @@
   "name": "wordpress",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
