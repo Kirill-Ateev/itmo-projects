@@ -13,7 +13,7 @@ app.get("/login", function (req, res) {
 });
 
 app.post("/wordpress", async (req, res) => {
-  const { content } = req.body;
+  const { content } = req.query;
 
   const rawResponse1 = await fetch("https://wordpress.kodaktor.ru/wp-json/jwt-auth/v1/token", {
     method: "POST",
