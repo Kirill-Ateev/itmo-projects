@@ -6,14 +6,15 @@ PORT = 8000
 class MyHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
-        # self.send_header("Content-type", "application/octet-stream")
-        # self.send_header("Content-length", "33333")
-        self.send_header("Connection", "keep-alive")
+        self.send_header("Content-type", "application/octet-stream")
         self.send_header("Transfer-Encoding", "chunked")
         self.end_headers()
-        self.wfile.write(bytes("aaaaaaaaaa","utf-8"))
-        self.wfile.write(bytes("bbbbbbbbbbb","utf-8"))
-        self.wfile.write(bytes("cccccccccccc","utf-8"))
+        
+        chunks = ['a' * 10, 'b' * 11, 'c' * 12]
+
+        for i in chunks:
+            self.wfile.write(b"%x\r\n%s\r\n" %
+                             (len(i), bytes(i, 'UTF-8')))
 
 
 try:
