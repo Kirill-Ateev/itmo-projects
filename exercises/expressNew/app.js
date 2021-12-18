@@ -1,4 +1,4 @@
-const login = 'itmo307692';
+
 export const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,OPTIONS,DELETE',
@@ -11,6 +11,8 @@ export const headersTextPlain = {
   'X-Author': login,
   ...CORS,
 };
+
+const login = 'bgdshka';
 
 export default function appScr(
   express,

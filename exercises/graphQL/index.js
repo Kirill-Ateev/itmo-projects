@@ -3,22 +3,15 @@ import {
     InMemoryCache,
     ApolloProvider,
     useQuery,
-    gql
   } from "@apollo/client";
 
   const client = new ApolloClient({
-    uri: 'https://demo111221.kodaktor.ru/',
+    uri: 'https://demo111221.kodaktor.ru/graphql',
     cache: new InMemoryCache()
   });
 
   client
   .query({
-    query: gql`
-      query GetRates {
-        rates(currency: "USD") {
-          currency
-        }
-      }
-    `
+    'data': 'hello'
   })
   .then(result => console.log(result));
