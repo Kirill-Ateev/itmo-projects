@@ -1,2 +1,2 @@
 # itmo-projects
-View - https://bgdshka.github.io/itmo-projects/
+View - https://kirill-ateev.github.io/itmo-projects/
